@@ -16,8 +16,9 @@ export class AppComponent implements OnDestroy {
   constructor(private router: Router) {
     this.subscription = router.events.subscribe((event) => {
       if (event instanceof NavigationStart) {
-        browserRefresh = !router.navigated;
+        //browserRefresh = !router.navigated;
         console.log('app' + browserRefresh);
+        router.routeReuseStrategy.shouldReuseRoute = () => false;
       }
     });
   }
